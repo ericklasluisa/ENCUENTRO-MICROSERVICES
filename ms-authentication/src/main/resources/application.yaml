@@ -10,9 +10,9 @@ spring:
   application:
     name: servicio-autenticacion
   datasource:
-    url: jdbc:postgresql://localhost:5432/auth_db
-    username: admin
-    password: admin
+    url: jdbc:postgresql://localhost:26257/auth_db?user=root&password=
+    username: root
+    password:
   jpa:
     hibernate:
       ddl-auto: update

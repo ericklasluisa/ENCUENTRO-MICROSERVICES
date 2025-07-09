@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name = "ms-authentication", url = "http://localhost:8080")
+@FeignClient(name = "servicio-autenticacion")
 public interface UsuarioClient {
 
     @PostMapping("/usuarios/lista")

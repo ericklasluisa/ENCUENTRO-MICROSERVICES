@@ -5,9 +5,9 @@ spring:
   application:
     name: servicio-pagos
   datasource:
-    url: jdbc:postgresql://localhost:5432/pagos_db
-    username: admin
-    password: admin
+    url: jdbc:postgresql://localhost:26256/pagos_db?user=root&password=
+    username: root
+    password:
   jpa:
     hibernate:
       ddl-auto: update

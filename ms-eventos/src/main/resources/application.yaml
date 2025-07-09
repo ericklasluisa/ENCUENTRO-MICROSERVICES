@@ -5,9 +5,9 @@ spring:
   application:
     name: servicio-eventos
   datasource:
-    url: jdbc:postgresql://localhost:5432/eventos_db
-    username: admin
-    password: admin
+    url: jdbc:postgresql://localhost:26258/eventos_db?user=root&password=
+    username: root
+    password:
   jpa:
     hibernate:
       ddl-auto: update

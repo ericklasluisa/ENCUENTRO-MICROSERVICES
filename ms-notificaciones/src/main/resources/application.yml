@@ -5,9 +5,9 @@ spring:
   application:
     name: servicio-notificaciones
   datasource:
-    url: jdbc:postgresql://localhost:5432/notificaciones_db
-    username: admin
-    password: admin
+    url: jdbc:postgresql://localhost:26259/notificaciones_db?user=root&password=
+    username: root
+    password:
   jpa:
     hibernate:
       ddl-auto: update

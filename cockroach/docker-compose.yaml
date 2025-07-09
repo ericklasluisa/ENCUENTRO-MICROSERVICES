@@ -1,40 +1,52 @@
-version: '3.8'
+version: "3.8"
 
 services:
-  cockroach1:
+  nodo1:
     image: cockroachdb/cockroach:latest
-    container_name: crdb-node1
-    hostname: crdb-node1  # Importante para el DNS interno
+    container_name: nodo1
+    hostname: nodo1 # Importante para el DNS interno
     ports:
-      - "26257:26257"  # SQL (externo:26257 → interno:26257)
-      - "8080:8080"    # UI
+      - "26257:26257" # SQL (externo:26257 → interno:26257)
+      - "8080:8080" # UI
     volumes:
-      - cockroach1:/cockroach/cockroach-data
-    command: start-single-node --insecure --advertise-addr=crdb-node1
+      - nodo1:/cockroach/cockroach-data
+    command: start-single-node --insecure --advertise-addr=nodo1
 
-  cockroach2:
+  nodo2:
     image: cockroachdb/cockroach:latest
-    container_name: crdb-node2
-    hostname: crdb-node2
+    container_name: nodo2
+    hostname: nodo2
     ports:
-      - "26258:26257"  # SQL (externo:26258 → interno:26257)
-      - "8081:8080"    # UI
+      - "26258:26257" # SQL (externo:26258 → interno:26257)
+      - "8081:8080" # UI
     volumes:
-      - cockroach2:/cockroach/cockroach-data
-    command: start --insecure --store=node2 --listen-addr=0.0.0.0:26257 --http-addr=0.0.0.0:8080 --join=crdb-node1:26257 --advertise-addr=crdb-node2
+      - nodo2:/cockroach/cockroach-data
+    command: start --insecure --store=node2 --listen-addr=0.0.0.0:26257 --http-addr=0.0.0.0:8080 --join=nodo1:26257 --advertise-addr=nodo2
 
-  cockroach3:
+  nodo3:
     image: cockroachdb/cockroach:latest
-    container_name: crdb-node3
-    hostname: crdb-node3
+    container_name: nodo3
+    hostname: nodo3
     ports:
-      - "26259:26257"  # SQL (externo:26259 → interno:26257)
-      - "8082:8080"    # UI
+      - "26259:26257" # SQL (externo:26259 → interno:26257)
+      - "8082:8080" # UI
     volumes:
-      - cockroach3:/cockroach/cockroach-data
-    command: start --insecure --store=node3 --listen-addr=0.0.0.0:26257 --http-addr=0.0.0.0:8080 --join=crdb-node1:26257 --advertise-addr=crdb-node3
+      - nodo3:/cockroach/cockroach-data
+    command: start --insecure --store=node3 --listen-addr=0.0.0.0:26257 --http-addr=0.0.0.0:8080 --join=nodo1:26257 --advertise-addr=nodo3
+
+  nodo4:
+    image: cockroachdb/cockroach:latest
+    container_name: nodo4
+    hostname: nodo4
+    ports:
+      - "26256:26257" # SQL (externo:26256 → interno:26257)
+      - "8083:8080" # UI
+    volumes:
+      - nodo4:/cockroach/cockroach-data
+    command: start --insecure --store=node4 --listen-addr=0.0.0.0:26257 --http-addr=0.0.0.0:8080 --join=nodo1:26257 --advertise-addr=nodo4
 
 volumes:
-  cockroach1:
-  cockroach2:
-  cockroach3:  # Corregí el typo (antes decía "cockroach3")
+  nodo1:
+  nodo2:
+  nodo3:
+  nodo4:
