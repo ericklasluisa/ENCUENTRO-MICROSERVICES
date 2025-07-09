@@ -1,9 +1,9 @@
 server:
-  port: 8083
+  port: 0
 
 spring:
   application:
-    name: SERVICIO-NOTIFICACIONES
+    name: servicio-notificaciones
   datasource:
     url: jdbc:postgresql://localhost:5432/notificaciones_db
     username: admin

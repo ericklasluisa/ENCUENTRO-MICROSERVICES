@@ -8,7 +8,7 @@ application:
 
 spring:
   application:
-    name: ms-authentication
+    name: servicio-autenticacion
   datasource:
     url: jdbc:postgresql://localhost:5432/auth_db
     username: admin
@@ -28,7 +28,17 @@ spring:
     username: admin
     password: admin
 server:
-  port: 8080
+  port: 0
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${random.value}
 
 management:
   endpoints:

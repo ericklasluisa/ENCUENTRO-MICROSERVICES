@@ -1,0 +1,70 @@
+server:
+  port: 8000
+
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+
+      server:
+        webmvc:
+          routes:
+          - id: ms-authentication
+            uri: lb://servicio-autenticacion
+            predicates:
+              - Path=/api/v1/auth/**
+            filters:
+              - StripPrefix=2
+          - id: ms-authentication-usuarios
+            uri: lb://servicio-autenticacion
+            predicates:
+              - Path=/api/v1/usuarios/**
+            filters:
+              - StripPrefix=2
+          - id: ms-eventos
+            uri: lb://servicio-eventos
+            predicates:
+              - Path=/api/v1/eventos/**
+            filters:
+              - StripPrefix=2
+          - id: ms-eventos-boletos
+            uri: lb://servicio-eventos
+            predicates:
+              - Path=/api/v1/boletos/**
+            filters:
+              - StripPrefix=2
+          - id: ms-notificaciones
+            uri: lb://servicio-notificaciones
+            predicates:
+              - Path=/api/v1/notificaciones/**
+            filters:
+              - StripPrefix=2
+          - id: ms-pagos
+            uri: lb://servicio-pagos
+            predicates:
+              - Path=/api/v1/pagos/**
+            filters:
+              - StripPrefix=2
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    prefer-ip-address: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always

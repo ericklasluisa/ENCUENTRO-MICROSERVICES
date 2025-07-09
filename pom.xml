@@ -4,19 +4,19 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>ec.edu.espe</groupId>
-	<artifactId>microservicios-22747</artifactId>
+	<artifactId>encuentro-22747</artifactId>
 	<version>1.0.0</version>
-	<name>microservicios-22747</name>
-	<description>Microservicios nrc 22747</description>
+	<name>encuentro-22747</name>
+	<description>Microservicios Encuentro nrc 22747</description>
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>mis-publicaciones</module>
-		<module>ms-catalogo</module>
-		<module>ms-notificaciones</module>
-		<module>sincronizacion</module>
 		<module>ms-eureka-server</module>
 		<module>ms-api-gateway</module>
+		<module>ms-notificaciones</module>
+		<module>ms-authentication</module>
+		<module>ms-eventos</module>
+		<module>ms-pagos</module>
 	</modules>
 
 </project>
