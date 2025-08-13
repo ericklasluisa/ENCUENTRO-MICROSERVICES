@@ -1,7 +1,5 @@
 version: "3.9"
 
-name: encuentro-microservices
-
 services:
   postgres:
     image: postgres:15
